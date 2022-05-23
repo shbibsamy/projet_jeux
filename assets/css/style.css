@@ -1,0 +1,147 @@
+/* reset */
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* border: 1px solid black; */
+}
+
+/* structure */
+body {
+    background-color: black;
+}
+
+.wrapper {
+    margin: auto;
+    width: 80%;
+    background-color: white;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Styles générales */
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+/* espace jeu pendu */
+.espace-jeu {
+    width: 80%;
+    height: 80vh;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.espace-score {
+    width: 50%;
+    height: 30%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+#span_vies {
+    font-size: 5rem;
+}
+
+.espace-mot {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.espace-mot span {
+    display: flex;
+    justify-content: center;
+    padding: 0.2rem;
+}
+
+.espace-alphabet {
+    width: 90%;
+    margin: 1rem;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.espace-mot span {
+    font-size: 3rem;
+    margin: 0.5rem;
+}
+
+.espace-alphabet span {
+    font-size: 2rem;
+    width: 3rem;
+    padding: 0.2rem;
+    margin: 0.2rem;
+    height: 3rem;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: darkred;
+    color: white;
+    font-weight: bolder;
+}
+
+.espace-alphabet span:hover {
+    cursor: pointer;
+}
+
+.espace-alphabet .lettre-choisi {
+    background: darkviolet;
+}
+
+.resultat {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resultat span {
+    font-size: 2rem;
+}
+
+#rejouer {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+}
+
+#rejouer:hover {
+    cursor: pointer;
+}
+
+/* Espace jeu Morpion */
+
+td {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+}
+

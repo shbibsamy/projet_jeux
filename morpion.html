@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Morpion</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/main.js" defer></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>
+                Bienvenue sur mon jeu du Morpion.
+            </h1>
+        </header>
+        <main>
+            <div class="regles">
+                <h2>
+                    REGLES
+                </h2>
+                <span>
+                    Chaque joueur va a tour de rôle cliquer sur une case pour tenter d'aligner ses 3 symboles sur une
+                    ligne, une colonne ou une diagonale.
+                </span>
+            </div>
+            <div class="jeu-grille">
+                <label for="taille">
+                    <span>Changer la taille de la grille</span>
+                    <select name="" id="taille">
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </label>
+            </div>
+            <div class="gagne">
+                <span id="gagne_span"></span>
+                <input type="button" value="Rejouer" id="gagne_bouton" hidden>
+            </div>
+            <div class="infos">
+                <h2>Informations</h2>
+                <p>J'ai créé ce jeu du morpion pour apprendre à manipuler le DOM. En suite, j'ai donné l'option de
+                    changer la taille de la grille pour m'offrir un challenge supplémentaire : détecter de manière dynamique qui a gagné.</p>
+            </div>
+        </main>
+        <footer>
+        </footer>
+    </div>
+</body>
+
+</html>
