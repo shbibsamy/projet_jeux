@@ -3,22 +3,37 @@
 ::before,
 ::after {
     box-sizing: border-box;
+    color: #141101;
     margin: 0;
     padding: 0;
     font-size: 12px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     /* border: 1px solid black; */
 }
 
 /* structure */
 body {
-    background-color: black;
+    background-color: #353535;
+    background-image: url(../img/tunnel.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .wrapper {
     margin: auto;
     width: 80%;
-    background-color: white;
+    background-color: #FFF9EC;
+    height: 100vh;
+    backdrop-filter: invert(100%);
+    background-color: rgba(230,230,220, 0.9);
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 20vh;
 }
 
 main {
@@ -26,11 +41,23 @@ main {
     flex-direction: column;
     align-items: center;
     padding: 2rem;
+    height: 70vh;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 3px solid #C20114;
+    padding: 1rem;
 }
 
 /* Styles générales */
 h1 {
     font-size: 2.5rem;
+    color: #C20114;
+    padding: 2rem;
 }
 
 h2 {
@@ -38,110 +65,35 @@ h2 {
     padding: 1rem;
 }
 
-/* espace jeu pendu */
-.espace-jeu {
-    width: 80%;
-    height: 80vh;
-    border: 1px solid black;
+h3 {
+    font-size: 1.8rem;
+}
+
+/* Navbar */
+nav {
+    background: linear-gradient(#C20114, #65010B);
+    width: 100%;
+    padding: 1vh;
+}
+
+nav ul {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-around;
+    padding: 1vh;
 }
 
-
-.espace-score {
-    width: 50%;
-    height: 30%;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
+nav li {
+    list-style-type: none;
 }
 
-#span_vies {
-    font-size: 5rem;
-}
-
-.espace-mot {
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-}
-
-.espace-mot span {
-    display: flex;
-    justify-content: center;
-    padding: 0.2rem;
-}
-
-.espace-alphabet {
-    width: 90%;
-    margin: 1rem;
-    height: fit-content;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.espace-mot span {
-    font-size: 3rem;
-    margin: 0.5rem;
-}
-
-.espace-alphabet span {
+nav a {
+    color: #FFF9EC;
     font-size: 2rem;
-    width: 3rem;
-    padding: 0.2rem;
-    margin: 0.2rem;
-    height: 3rem;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: darkred;
-    color: white;
-    font-weight: bolder;
+    text-decoration: none;
+    padding: 1vh;
 }
 
-.espace-alphabet span:hover {
-    cursor: pointer;
+nav a:hover {
+    background-color: #FFF9EC;
+    color:#141101;
 }
-
-.espace-alphabet .lettre-choisi {
-    background: darkviolet;
-}
-
-.resultat {
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.resultat span {
-    font-size: 2rem;
-}
-
-#rejouer {
-    margin: 0.5rem;
-    padding: 0.5rem;
-    font-size: 1.5rem;
-}
-
-#rejouer:hover {
-    cursor: pointer;
-}
-
-/* Espace jeu Morpion */
-
-td {
-    width: 50px;
-    height: 50px;
-    border: 1px solid black;
-}
-

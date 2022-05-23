@@ -1,0 +1,26 @@
+@import url(style.css);
+
+/* Structure */
+.regles {
+    width: 70%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Espace jeu Morpion */
+.jeu-grille {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid black;
+}
