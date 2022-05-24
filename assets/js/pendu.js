@@ -12,7 +12,7 @@ const espaceResultat = document.querySelector(".resultat")
 let mot;
 let tours = 0;
 // Nombre de vies. Longeur du mot séléctionné /2 + 3.
-let vies;
+let vies = 7;
 let lettresUtilises = [];
 
 
@@ -22,8 +22,7 @@ function init() {
     // Stock combien de lettres il faut trouver
     tours = mot.length;
     window.addEventListener("keypress", logKey);
-    let spanViesRestantes = afficherVies();
-    espaceScore.appendChild(spanViesRestantes);
+    afficherVies();
     afficherMot();
     afficherAlphabet();
     boutonRejouer.addEventListener("click", e => {
@@ -39,13 +38,25 @@ function logKey(e) {
     lettreExiste(lettreAppuye)
 }
 
+// function afficherVies() {
+//     // Affiche les vies de départ
+//     vies = Math.floor(mot.length / 2 + 3);
+//     let spanVies = document.createElement("span");
+//     spanVies.id = "span_vies"
+//     spanVies.innerHTML = `Vies : ${vies}`;
+//     return spanVies;
+// }
+
 function afficherVies() {
-    // Affiche les vies de départ
-    vies = Math.floor(mot.length / 2 + 3);
-    let spanVies = document.createElement("span");
-    spanVies.id = "span_vies"
-    spanVies.innerHTML = `Vies : ${vies}`;
-    return spanVies;
+    let asciiArtChoix = `vies${vies}`
+    let asciiArt = document.getElementById(asciiArtChoix);
+    asciiArt.style.display = "flex";
+    asciiArt.style.justifyContent = "center";
+    if (vies < 7) {
+        asciiArtChoix = `vies${vies+1}`
+        asciiArt = document.getElementById(asciiArtChoix);
+        asciiArt.style.display = "none";
+    }
 }
 
 function choisirMot() {
@@ -93,7 +104,7 @@ function lettreExiste(lettre) {
             }
         } else {
             vies--
-            viesMAJ();
+            afficherVies();
         }
     }
     lettresUtilises.push(lettre);

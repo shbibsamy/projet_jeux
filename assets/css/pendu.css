@@ -1,0 +1,106 @@
+@import url(style.css);
+
+/* espace jeu pendu desktop */
+.espace-jeu {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.espace-score {
+    display: flex;
+    justify-content: center;
+    width: 30rem;
+}
+
+.espace-score p {
+    white-space: pre;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    display: none;
+}
+
+#span_vies {
+    font-size: 4rem;
+}
+
+.espace-mot {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh;
+}
+
+.espace-mot span {
+    display: flex;
+    justify-content: center;
+    padding: 0.2rem;
+}
+
+.espace-alphabet {
+    width: 90%;
+    margin: 1vh;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.espace-mot span {
+    font-size: 3rem;
+    margin: 0.5rem;
+}
+
+.espace-alphabet span {
+    font-size: 2rem;
+    width: 3rem;
+    padding: 0.2rem;
+    margin: 0.2rem;
+    height: 3rem;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #65010B;
+    color: #FFF9EC;
+    font-weight: bolder;
+}
+
+.espace-alphabet span:hover {
+    cursor: pointer;
+}
+
+.espace-alphabet .lettre-choisi {
+    background: #353535;
+}
+
+.resultat {
+    display: flex;
+    justify-content: center;
+    padding: 1vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resultat span {
+    font-size: 1.5rem;
+}
+
+#rejouer {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    background-color: #353535;
+    color: #FFF9EC;
+}
+
+#rejouer:hover {
+    cursor: pointer;
+    background-color: #FFF9EC;
+    color: #141101;
+}
