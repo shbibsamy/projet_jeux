@@ -9,11 +9,16 @@
 }
 
 .espace-score {
-    width: 50%;
-    height: 20%;
     display: flex;
-    justify-content: center; 
-    align-items: center;
+    justify-content: center;
+    width: 30rem;
+}
+
+.espace-score p {
+    white-space: pre;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    display: none;
 }
 
 #span_vies {
@@ -83,7 +88,7 @@
 }
 
 .resultat span {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 #rejouer {
@@ -96,4 +101,6 @@
 
 #rejouer:hover {
     cursor: pointer;
+    background-color: #FFF9EC;
+    color: #141101;
 }
