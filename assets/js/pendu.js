@@ -14,14 +14,14 @@ let tours = 0;
 // Nombre de vies. Longeur du mot séléctionné /2 + 3.
 let vies = 7;
 let lettresUtilises = [];
-
+let jeuxFini = false;
 
 function init() {
     // Prépare le jeu
     mot = choisirMot();
     // Stock combien de lettres il faut trouver
     tours = mot.length;
-    window.addEventListener("keypress", logKey);
+    document.addEventListener("keypress", logKey);
     afficherVies();
     afficherMot();
     afficherAlphabet();
@@ -31,27 +31,21 @@ function init() {
 }
 
 function logKey(e) {
-    let lettreAppuye = String.fromCharCode(e.which).toUpperCase();
-    let spansBoutons = espaceAlphabet.querySelectorAll("span");
-    let lettreIndiceAlphabet = alphabet.indexOf(lettreAppuye);
-    spansBoutons[lettreIndiceAlphabet].classList.add("lettre-choisi");
-    lettreExiste(lettreAppuye)
+    if (!jeuxFini) {
+        if (e.which >= 97 && e.which <= 122) {
+            let lettreAppuye = String.fromCharCode(e.which).toUpperCase();
+            let spansBoutons = espaceAlphabet.querySelectorAll("span");
+            let lettreIndiceAlphabet = alphabet.indexOf(lettreAppuye);
+            spansBoutons[lettreIndiceAlphabet].classList.add("lettre-choisi");
+            lettreExiste(lettreAppuye);
+        }
+    }
 }
-
-// function afficherVies() {
-//     // Affiche les vies de départ
-//     vies = Math.floor(mot.length / 2 + 3);
-//     let spanVies = document.createElement("span");
-//     spanVies.id = "span_vies"
-//     spanVies.innerHTML = `Vies : ${vies}`;
-//     return spanVies;
-// }
 
 function afficherVies() {
     let asciiArtChoix = `vies${vies}`
     let asciiArt = document.getElementById(asciiArtChoix);
-    asciiArt.style.display = "flex";
-    asciiArt.style.justifyContent = "center";
+    asciiArt.style.display = "block";
     if (vies < 7) {
         asciiArtChoix = `vies${vies+1}`
         asciiArt = document.getElementById(asciiArtChoix);
@@ -122,6 +116,7 @@ function gagner() {
     let spanResultat = document.createElement("span");
     let mesSpans = espaceAlphabet.querySelectorAll("span");
     if (tours == 0) {
+        jeuxFini = true;
         // C'est à dire que toutes les lettres ont étés trouvés.
         spanResultat.innerHTML = "C'est gagné !";
         espaceResultat.appendChild(spanResultat);
@@ -132,6 +127,7 @@ function gagner() {
         window.removeEventListener("keypress", logKey);
     } else if (vies === 0) {
         // C'est perdu
+        jeuxFini = true;
         spanResultat.innerHTML = "C'est perdu ! Mot recherché :";
         let spanMotRecherche = document.createElement("span");
         spanMotRecherche.innerHTML = mot;
