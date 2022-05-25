@@ -8,7 +8,6 @@
     padding: 0;
     font-size: 12px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    /* border: 1px solid black; */
 }
 
 /* structure */
@@ -17,17 +16,16 @@ body {
     background-image: url(../img/tunnel.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    /* backdrop-filter: blur(5px); */
-
 }
 
 .wrapper {
     margin: auto;
-    width: 80%;
+    width: 70%;
     background-color: #FFF9EC;
     height: 100vh;
     backdrop-filter: invert(100%);
-    background-color: rgba(230, 230, 220, 0.95);
+    /* background-color: rgba(230, 230, 220, 0.95); */
+    background-color: #FFF9EC;
 }
 
 header {
@@ -35,14 +33,13 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 20vh;
+    height: fit-content;
 }
 
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.5rem;
     min-height: 70vh;
 }
 
@@ -109,6 +106,7 @@ nav a:hover {
     color: #141101;
 }
 
+/* Tous les endroits "résultat" de tous les jeux, et les boutons "rejouer" */
 .resultat {
     display: flex;
     justify-content: center;
@@ -128,6 +126,7 @@ nav a:hover {
     font-size: 1.5rem;
     background-color: #353535;
     color: #FFF9EC;
+    text-transform: uppercase;
 }
 
 #rejouer:hover {
@@ -136,16 +135,25 @@ nav a:hover {
     color: #141101;
 }
 
+/* Index côté droit. Les détails du jeux séléctionné */
 .detail-jeu {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 45%;
     align-items: center;
 }
 
 .detail-jeu img {
     width: 40%;
-    max-width: 180px;
+    width: 200px;
+    height: 200px;
+    padding: 1rem;
+}
+
+.detail-jeu p {
+    padding: 1rem;
+    padding-right: 10%;
+    padding-left: 10%;
 }
 
 #bouton_jouer {
@@ -154,6 +162,8 @@ nav a:hover {
     font-size: 2.5rem;
     background-color: #FFF9EC;
     color: #C20114;
+    border: 1px solid #141101;
+    text-decoration: none;
 }
 
 #bouton_jouer:hover {
@@ -168,6 +178,8 @@ nav a:hover {
     font-size: 2.5rem;
     background-color: #FFF9EC;
     color: #C20114;
+    border: 1px solid #141101;
+    text-decoration: none;
 }
 
 #bouton_scores:hover {
@@ -176,15 +188,38 @@ nav a:hover {
     color: #141101;
 }
 
+/* Index coté droit, menu des jeux */
 .menu-jeu {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 55%;
+    height: 70vh;
+    /* background-color: rgba(75, 143, 140, 0.3); */
+    background: #141101;
     padding: 2%;
+}
+
+.menu-jeu h3 {
+    color: #FFF9EC;
+    padding: 1rem;
 }
 
 .menu-jeu a {
     display: flex;
-    flex-direction: row;
+    width: fit-content;
+    flex-direction: column;
     align-items: center;
+    padding: 3%;
+    text-decoration: none;
+}
+
+.menu-jeu img {
+    height: 170px;
+    width: 170px;
+}
+
+.menu-jeu p {
+    display: none;
 }
