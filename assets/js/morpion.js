@@ -9,6 +9,8 @@ let objJeu = {
 
 // Combien de fois on a joué
 let tours = 0;
+let jeuxFini = false;
+
 let tailleGrille = document.getElementById("taille").value;
 let inputGrille = document.getElementById("taille");
 
@@ -17,6 +19,7 @@ inputGrille.addEventListener("change", e => {
     init()
 })
 init();
+
 function init() {
     // Au cas où on a déjà joué, je réinitialise le jeu
     let preEspaceJeu = document.getElementById("boite_jeu");
@@ -34,7 +37,7 @@ function init() {
     let laGrille = document.querySelector(".jeu-grille");
     // Créer une div pour la contenir
     let espaceJeu = document.createElement("div");
-    espaceJeu.id = "boite_jeu";    
+    espaceJeu.id = "boite_jeu";
     // Créer le table du jeu
     creerObjJeu();
     maTable = createTable();
@@ -59,21 +62,20 @@ function createTable() {
     let maTable = document.createElement("table");
     let tBody = document.createElement("tbody");
     maTable.appendChild(tBody);
-    let maTableCaption = maTable.createCaption();
-    maTableCaption.innerHTML = "Morpion";
-    maTableCaption.classList.add("morpion-titre");
     // Créer les lignes et les cellules
     for (let rows = 0; rows < tailleGrille; rows++) {
         let row = document.createElement("tr");
         for (let cols = 0; cols < tailleGrille; cols++) {
             let cell = document.createElement("td");
             // Ajouter un event listener à chaque cellule. Si cliqué, appel la fonction dessiner et jouer
+            let canvas = document.createElement("CANVAS");
+            cell.appendChild(canvas);
             cell.addEventListener("click", e => {
                 tour *= -1;
                 // Met le joueur dans la className
                 cell.classList.add(tour);
                 // Continuer
-                dessiner(cell);
+                dessiner(canvas);
                 jouer(cell, rows, cols);
             }, {
                 // Le bouton ne marche qu'une seule fois
@@ -87,11 +89,30 @@ function createTable() {
 }
 
 // Fonction qui va déssiner dans la céllule
-function dessiner(cell) {
-    if (tour === 1) {
-        cell.innerHTML = "X";
-    } else {
-        cell.innerHTML = "O";
+function dessiner(canvas) {
+    if (!jeuxFini) {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.lineWidth = 5
+        if (tour === 1) {
+            // Dessine un X
+            ctx.strokeStyle = "red"
+            ctx.beginPath();
+            ctx.moveTo(5, 5);
+            ctx.lineTo(42, 45);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(42, 5);
+            ctx.lineTo(5, 45);
+            ctx.stroke();
+        } else {
+            // dessine un cercle
+            ctx.strokeStyle = "green"
+            ctx.beginPath();
+            ctx.arc(23, 24, 19, 0, 2 * Math.PI, false);
+            ctx.stroke();
+        }
     }
 }
 
@@ -104,7 +125,7 @@ function jouer(cell, row, col) {
     if (row === col) {
         objJeu.diags[0] += cClass;
     }
-    if (row+col === tailleGrille-1) {
+    if (row + col === tailleGrille - 1) {
         objJeu.diags[1] += cClass;
     }
     gagner();
@@ -112,31 +133,34 @@ function jouer(cell, row, col) {
 
 
 function gagner() {
-    // Faire un string de l'objet qui suit le jeu
-    let resultat = JSON.stringify(objJeu);
-    let boutonGagne = document.getElementById("gagne_bouton");
-    let spanGagne = document.getElementById("gagne_span");
-    // Cherche si l'objet contient le chiffre 3
-    if (resultat.includes(tailleGrille)) {
-        maTable.classList.add("disabled");
-        if (tour === 1) {
-            spanGagne.innerHTML = "Joueur 1 a Gagné ! Bravo !";
-        } else {
-            spanGagne.innerHTML = "Joueur 2 a Gagné ! Bravo !";
-
-        }
-        boutonGagne.removeAttribute("hidden", "");
-        boutonGagne.addEventListener("click", e => {
-            location.reload();
-        })
-    } else {
-        tours++;
-        if (tours === tailleGrille*tailleGrille) {
+    if (!jeuxFini) {
+        // Faire un string de l'objet qui suit le jeu
+        let resultat = JSON.stringify(objJeu);
+        let boutonGagne = document.getElementById("rejouer");
+        let spanGagne = document.getElementById("gagne_span");
+        // Cherche si l'objet contient le chiffre 3
+        if (resultat.includes(tailleGrille)) {
+            jeuxFini = true;
+            maTable.classList.add("disabled");
+            if (tour === 1) {
+                spanGagne.innerHTML = "Joueur 1 a Gagné ! Bravo !";
+            } else {
+                spanGagne.innerHTML = "Joueur 2 a Gagné ! Bravo !";
+            }
             boutonGagne.removeAttribute("hidden", "");
-            spanGagne.innerHTML = "Oups!"
             boutonGagne.addEventListener("click", e => {
                 location.reload();
             })
+        } else {
+            tours++;
+            if (tours === tailleGrille * tailleGrille) {
+                jeuxFini = true;
+                boutonGagne.removeAttribute("hidden", "");
+                spanGagne.innerHTML = "Oups!"
+                boutonGagne.addEventListener("click", e => {
+                    location.reload();
+                })
+            }
         }
     }
 }

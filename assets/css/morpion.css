@@ -13,14 +13,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0.5rem;
 }
 
 table {
     border-collapse: collapse;
+    margin: 0.5rem;
 }
 
 td {
     width: 4rem;
     height: 4rem;
     border: 1px solid black;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
