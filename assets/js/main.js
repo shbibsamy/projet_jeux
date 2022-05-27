@@ -18,11 +18,8 @@ jeux.forEach(element => {
 
 function majDetails(element) {
     let lien = element.querySelector("a").href;
-    console.log(lien);
     let img = element.querySelector("img").src;
-    console.log(img);
     let titre = element.querySelector("h3").innerHTML;
-    console.log(titre);
     let para = element.querySelector("p").innerHTML;
     imgDetail.src = img;
     titreDetail.innerHTML = titre;
